@@ -1,0 +1,22 @@
+1. pom.xml : Project Object Model
+           - Maven이 해당 파일을 토대로 의존성 관리 및 배포까지 모든 것을 관리한다.
+           - Spring boot는 pom.xml을 토대로 필요한 라이브러리나 프레임워크의 의존 관계 설정을 자동으로 해준다.
+
+2. resources : 자원 파일 저장
+             - static : 웹 정적 리소스 저장 위치(html, css, js, img)
+             - templates : 웹 동적 리소스 저장 위치, 뷰 템플릿 저장 위치(FreeMarker, Groovy, Thymeleaf, JSP)
+             - application.properties : Spring boot의 기본 설정 파일
+                    spring boot가 application 시작 시 이곳의 설정들을 자동으로 반영해 준다.
+                    이곳에 DB정보, 서버 포트 번호 등을 설정
+
+3. Jar vs War
+    1. Jar(Java Archive) - 하나의 Application 기능이 가능하도록 java 파일 등을 압축
+                         - 실행될 클래스를 명시해야 한다(main)
+                         - JVM 위에서 단독으로 실행이 가능하다
+                         - 라이브러리, resource, property 파일 등을 포함한다
+                         - Spring boot는 WAS(Tomcat)을 내장하고 있기 때문에 jar 배포가 가능하다
+
+    2. War(Web Archive) - Web Application을 지원하기 위한 압축
+                        - 단독으로 실행이 불가능하다(WAS 필요)
+                        - jsp, Servlet, git, html, jar 등을 압축하고 지원
+                        - WAS(Tomcat)가 알아서 압축을 해제해서 배포해준다.
