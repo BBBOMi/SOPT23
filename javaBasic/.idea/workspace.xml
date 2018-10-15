@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72e90be8-ee94-4c77-91e9-8b9fae1e90c5" name="Default Changelist" comment="" />
+    <list default="true" id="72e90be8-ee94-4c77-91e9-8b9fae1e90c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../seminar1/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../seminar1/.gitignore" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +60,14 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="80" />
+        </counts>
+      </usages-collector>
+    </session>
+    <session id="-59735693">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -195,7 +205,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="936" />
     <option name="width" value="996" />
     <option name="height" value="1032" />
@@ -206,6 +216,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -235,8 +247,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,16 +297,17 @@
       <workItem from="1538742861144" duration="322000" />
       <workItem from="1538743305041" duration="5000" />
       <workItem from="1538814812232" duration="368000" />
+      <workItem from="1539590139618" duration="929000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3898000" />
+    <option name="totallyTimeSpent" value="4827000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="624" y="0" width="664" height="688" extended-state="0" />
+    <frame x="624" y="0" width="664" height="688" extended-state="1" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36589405" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.37913907" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
