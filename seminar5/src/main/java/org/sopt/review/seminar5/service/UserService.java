@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.sopt.review.seminar5.dto.User;
 import org.sopt.review.seminar5.mapper.UserMapper;
 import org.sopt.review.seminar5.model.DefaultRes;
+import org.sopt.review.seminar5.model.SignUpReq;
 import org.sopt.review.seminar5.utils.ResponseMessage;
 import org.sopt.review.seminar5.utils.StatusCode;
 
@@ -67,14 +68,17 @@ public class UserService {
 
     /**
      * 회원 가입
-     * @param user
+     * @param signUpReq
      *      가입할 회원 데이터
      * @return 상태코드와 메세지, 결과 데이터를 가지고 있는 DefaultRes
      */
     @Transactional
-    public DefaultRes save(final User user) {
+    public DefaultRes save(SignUpReq signUpReq) {
         try {
-            userMapper.save(user);
+            if(signUpReq.getProfile() != null) {
+                signUpReq.setProfileUrl(s3FileUploadService.upload(signUpReq.getProfile()));
+            }
+            userMapper.save(signUpReq);
             return DefaultRes.res(StatusCode.CREATED, ResponseMessage.CREATED_USER);
         } catch(Exception e) {
             // Rollback

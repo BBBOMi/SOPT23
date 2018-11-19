@@ -2,6 +2,7 @@ package org.sopt.review.seminar5.mapper;
 
 import org.apache.ibatis.annotations.*;
 import org.sopt.review.seminar5.dto.User;
+import org.sopt.review.seminar5.model.SignUpReq;
 
 import java.util.List;
 
@@ -45,9 +46,9 @@ public interface UserMapper {
 
     // 회원 등록, Auto-Increment는 회원 고유 번호
     // Auto-Increment 값을 받아오고 싶다면 리턴 타입을 int(Auto-Increment 컬럼 타입)으로 하면 된다
-    @Insert("INSERT INTO user(name, part) VALUES(#{username}, #{user.part})")
+    @Insert("INSERT INTO user(name, part, profileUrl) VALUES(#{signUpReq.name}, #{signUpReq.profileUrl})")
     @Options(useGeneratedKeys = true, keyColumn = "user.userIdx")
-    int save(@Param("user") final User user);
+    int save(@Param("signUpReq") final SignUpReq signUpReq);
 
     // Auto-Increment 값을 받아오고 싶지 않다면 @Options가 필요없다
     @Insert("INSERT INTO user(name, part) VALUES(#{user.name}, #{user.part})")
