@@ -92,23 +92,23 @@ public class UserService {
      * 회원 정보 수정
      * @param userIdx
      *      정보를 수정할 회원의 고유 번호
-     * @param user
+     * @param signUpReq
      *      수정할 회원 데이터
      * @return 상태코드와 메세지, 결과 데이터를 가지고 있는 DefaultRes
      */
     @Transactional
-    public DefaultRes update(final int userIdx, final User user) {
+    public DefaultRes update(final int userIdx, final SignUpReq signUpReq) {
         final User temp = userMapper.findByUserIdx(userIdx);
         if(temp == null) {
             return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessage.NOT_FOUND_USER);
         }
 
         try {
-             if(user.getName() != null) {
-                 temp.setName(user.getName());
+             if(signUpReq.getName() != null) {
+                 temp.setName(signUpReq.getName());
              }
-             if(user.getPart() != null) {
-                 temp.setPart(user.getPart());
+             if(signUpReq.getPart() != null) {
+                 temp.setPart(signUpReq.getPart());
              }
             userMapper.update(userIdx, temp);
             return DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_USER);

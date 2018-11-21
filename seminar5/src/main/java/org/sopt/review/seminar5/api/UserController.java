@@ -6,6 +6,7 @@ import org.sopt.review.seminar5.dto.User;
 import org.sopt.review.seminar5.model.SignUpReq;
 import org.sopt.review.seminar5.service.UserService;
 
+import org.sopt.review.seminar5.utils.auth.Auth;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Auth
     @GetMapping("")
     public ResponseEntity getUser(@RequestParam("name")final Optional<String> name) {
         try {
+            // name이 null일 경우 false, null이 아닐 경우 true
             if(name.isPresent()) {
                 return new ResponseEntity<>(userService.findByName(name.get()), HttpStatus.OK);
             } else {
@@ -73,16 +76,41 @@ public class UserController {
         }
     }
 
+    /**
+     * 회원 정보 수정 API
+     * 인증 필요
+     * @param userIdx
+     *      회원 고유 번호
+     * @param signUpReq
+     *      수정할 회원 정보 객체
+     * @param profile
+     *      프로필 사진 파일
+     * @return ResponseEntity
+     */
+    @Auth
     @PutMapping("/{userIdx}")
-    public ResponseEntity signUp(@PathVariable(value = "userIdx")final int userIdx, @RequestBody final User user) {
+    public ResponseEntity signUp(@PathVariable(value = "userIdx")final int userIdx,
+                                 SignUpReq signUpReq,
+                                 @RequestPart(value = "profile", required = false)final MultipartFile profile) {
         try {
-            return new ResponseEntity<>(userService.update(userIdx, user), HttpStatus.OK);
+            if(profile != null) {
+                signUpReq.setProfile(profile);
+            }
+            return new ResponseEntity<>(userService.update(userIdx, signUpReq), HttpStatus.OK);
         } catch(Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(FAIL_DEFAULT_RES, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
+    /**
+     * 회원 정보 삭제 API
+     * 인증 필요
+     * @param userIdx
+     *      회원 고유 번호
+     * @return  ResponseEntity
+     */
+    @Auth
     @DeleteMapping("/{userIdx}")
     public ResponseEntity deleteUser(@PathVariable(value = "userIdx")final int userIdx) {
         try {

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by bomi on 2018-11-13.
+ * Modified by bomi on 2018-11-19.
  */
 
 /**
@@ -37,6 +38,9 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE userIdx = #{userIdx}")
     User findByUserIdx(@Param("userIdx") final int userIdx);
 
+    // 이름과 비밀번호로 조회
+    @Select("SELECT * FROM user WHERE name = #{name} AND password = #{password}")
+    User findByNameAndPassword(@Param("name")final String name, @Param("password")final String password);
 
     /**
      * @Insert : 데이터 삽입 Annotation
