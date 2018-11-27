@@ -27,7 +27,7 @@ public class S3FileUploadService {
     private String bucket;
 
     // 버킷 주소 동적 할당
-    @Value("${cloud.qws.s3.bucket.url}")
+    @Value("${cloud.aws.s3.bucket.url}")
     private String defaultUrl;
 
     private final AmazonS3Client amazonS3Client;
