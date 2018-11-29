@@ -4,7 +4,7 @@
 
 | 메소드 | 경로                  | 설명               |
 | ------ | --------------------- | ------------------ |
-| GET    | /contents/            | 모든 컨텐츠 리스트 보기 |
+| GET    | /contents?offset={offset}&limit={limit} | 모든 컨텐츠 리스트 보기 |
 | GET    | /contents/{content_id} | 컨텐츠 상세보기    |
 | GET | /users/{user_id}/contents?offset={page_no}&limit={page_size} | 작성자 id로 컨텐츠 목록 조회 |
 | POST | /contents/ | 컨텐츠 등록 |
