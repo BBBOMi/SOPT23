@@ -2,7 +2,6 @@ package org.sopt.review.seminar5.api;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.sopt.review.seminar5.dto.User;
 import org.sopt.review.seminar5.model.SignUpReq;
 import org.sopt.review.seminar5.service.UserService;
 
@@ -10,7 +9,6 @@ import org.sopt.review.seminar5.utils.auth.Auth;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
@@ -51,8 +49,6 @@ public class UserController {
      * 회원 가입
      * @param signUpReq
      *      회원 가입 폼
-     * @param profile
-     *      프로필 사진 객체
      * @return ResponseEntity
      */
     /*
@@ -62,13 +58,13 @@ public class UserController {
     * 아무런 Annotation을 명시하지 않고 객체로 받으면 form-data로 받게된다
     */
     @PostMapping("")
-    public ResponseEntity signUp(SignUpReq signUpReq, @RequestPart(value = "profile", required = false)final MultipartFile profile) {
+    public ResponseEntity signUp(final SignUpReq signUpReq) {
         try {
             // 파일을 signUpReq에 저장
-            if(profile != null) {
-                // 사진을 같이 전송받았다면 사진을 SignUpReq 객체에 저장
-                signUpReq.setProfile(profile);
-            }
+//            if(profile != null) {
+//                // 사진을 같이 전송받았다면 사진을 SignUpReq 객체에 저장
+//                signUpReq.setProfile(profile);
+//            }
             return new ResponseEntity<>(userService.save(signUpReq), HttpStatus.OK);
         } catch(Exception e) {
             log.error(e.getMessage());
@@ -83,19 +79,16 @@ public class UserController {
      *      회원 고유 번호
      * @param signUpReq
      *      수정할 회원 정보 객체
-     * @param profile
-     *      프로필 사진 파일
      * @return ResponseEntity
      */
     @Auth
     @PutMapping("/{userIdx}")
     public ResponseEntity signUp(@PathVariable(value = "userIdx")final int userIdx,
-                                 SignUpReq signUpReq,
-                                 @RequestPart(value = "profile", required = false)final MultipartFile profile) {
+                                 final SignUpReq signUpReq) {
         try {
-            if(profile != null) {
-                signUpReq.setProfile(profile);
-            }
+//            if(profile != null) {
+//                signUpReq.setProfile(profile);
+//            }
             return new ResponseEntity<>(userService.update(userIdx, signUpReq), HttpStatus.OK);
         } catch(Exception e) {
             log.error(e.getMessage());
