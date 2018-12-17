@@ -18,6 +18,9 @@ public interface UserMapper {
     @Select("SELECT userIdx, name, email, password, profileUrl FROM user WHERE userIdx = #{userIdx}")
     User findUser(@Param("userIdx") final int userIdx);
 
+    @Insert("SELECT COUNT(email) FROM user WHERE email = #{email}")
+    int findByEmail(@Param("email") final String email);
+
     // 회원 가입
     @Insert("INSERT INTO user(name, email, password, profileUrl) VALUES(#{signUpReq.name}, #{signUpReq.email}, #{signUpReq.password}, #{signUpReq.profile}")
     @Options(useGeneratedKeys = true, keyColumn = "user.userIdx")
