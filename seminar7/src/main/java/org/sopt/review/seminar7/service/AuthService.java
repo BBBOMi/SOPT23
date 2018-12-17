@@ -2,6 +2,7 @@ package org.sopt.review.seminar7.service;
 
 import org.sopt.review.seminar7.model.DefaultRes;
 import org.sopt.review.seminar7.model.LoginReq;
+import org.sopt.review.seminar7.service.impl.JwtServiceImpl;
 
 /**
  * Created by bomi on 2018-12-14.
@@ -9,5 +10,5 @@ import org.sopt.review.seminar7.model.LoginReq;
 
 
 public interface AuthService {
-    DefaultRes<JwtService.TokenRes> login(final LoginReq loginReq);
+    DefaultRes<JwtServiceImpl.TokenRes> login(final LoginReq loginReq);
 }
